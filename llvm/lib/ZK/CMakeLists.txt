@@ -1,9 +1,20 @@
 add_compile_options(-fexceptions)
 
-add_llvm_component_library(LLVMZK
-  FieldArithmetics.cpp
-  ADDITIONAL_HEADER_DIRS
-  ${LLVM_MAIN_INCLUDE_DIR}/llvm/ZK
+if(DEFINED crypto3_INCLUDE_DIR)
+  include_directories(${crypto3_INCLUDE_DIR})
+  add_llvm_component_library(LLVMZK
+    FieldArithmetics.cpp
+    ADDITIONAL_HEADER_DIRS
+    ${LLVM_MAIN_INCLUDE_DIR}/llvm/ZK
+
+    LINK_COMPONENTS
+    Support
+  )
+else()
+  add_llvm_component_library(LLVMZK
+    FieldArithmetics.cpp
+    ADDITIONAL_HEADER_DIRS
+    ${LLVM_MAIN_INCLUDE_DIR}/llvm/ZK
 
   LINK_LIBS
   crypto3::algebra
@@ -21,6 +32,7 @@ add_llvm_component_library(LLVMZK
   marshalling::crypto3_multiprecision
   marshalling::crypto3_zk
 
-  LINK_COMPONENTS
-  Support
-)
+    LINK_COMPONENTS
+    Support
+  )
+endif()
