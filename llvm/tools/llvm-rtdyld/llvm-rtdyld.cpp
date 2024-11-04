@@ -368,7 +368,13 @@ TrivialMemoryManager::allocateTLSSection(uintptr_t Size, unsigned Alignment,
   // Get the offset of the TLSSpace in the TLS block by using a tpoff
   // relocation here.
   int64_t TLSOffset;
+#if defined(__ANDROID__) && defined(__x86_64__)
+  // Use an alternative method for Android x86_64
+  TLSOffset = reinterpret_cast<int64_t>(LLVMRTDyldTLSSpace);
+#else
+  // Original assembly code for other platforms
   asm("leaq LLVMRTDyldTLSSpace@tpoff, %0" : "=r"(TLSOffset));
+#endif
 
   TLSSection Section;
   // We use the storage directly as the initialization image. This means that
