@@ -17,20 +17,20 @@ else()
     ${LLVM_MAIN_INCLUDE_DIR}/llvm/ZK
 
   LINK_LIBS
-  crypto3::algebra
-  crypto3::block
-  crypto3::blueprint
-  crypto3::codec
-  crypto3::math
-  crypto3::multiprecision
-  crypto3::pkpad
-  crypto3::pubkey
-  crypto3::random
-  crypto3::zk
-  marshalling::core
-  marshalling::crypto3_algebra
-  marshalling::crypto3_multiprecision
-  marshalling::crypto3_zk
+  crypto3_algebra
+  crypto3_block
+  crypto3_blueprint
+  crypto3_codec
+  crypto3_math
+  crypto3_multiprecision
+  crypto3_pkpad
+  crypto3_pubkey
+  crypto3_random
+  crypto3_zk
+  marshalling_core
+  marshalling_crypto3_algebra
+  marshalling_crypto3_multiprecision
+  marshalling_crypto3_zk
 
     LINK_COMPONENTS
     Support
