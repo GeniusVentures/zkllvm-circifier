@@ -12,6 +12,9 @@ endif()
 
 add_llvm_library( LLVMHello MODULE BUILDTREE_ONLY
   Hello.cpp
+  
+  LINK_LIBS
+  LLVMCore
 
   DEPENDS
   intrinsics_gen

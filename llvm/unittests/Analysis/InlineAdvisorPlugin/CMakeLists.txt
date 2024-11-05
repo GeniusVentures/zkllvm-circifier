@@ -6,6 +6,9 @@ if (NOT WIN32 AND NOT CYGWIN)
   unset(LLVM_LINK_COMPONENTS)
   add_llvm_library(InlineAdvisorPlugin MODULE BUILDTREE_ONLY
     InlineAdvisorPlugin.cpp
+    LINK_LIBS
+    LLVMSupport
+    LLVMAnalysis
     )
   # Put PLUGIN next to the unit test executable.
   set_output_directory(InlineAdvisorPlugin

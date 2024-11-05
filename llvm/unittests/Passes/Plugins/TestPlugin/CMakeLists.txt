@@ -1,5 +1,8 @@
 add_llvm_library(TestPlugin MODULE BUILDTREE_ONLY
     TestPlugin.cpp
+    LINK_LIBS
+    LLVMCore
+    LLVMSupport
     )
 
 # Put PLUGIN next to the unit test executable.

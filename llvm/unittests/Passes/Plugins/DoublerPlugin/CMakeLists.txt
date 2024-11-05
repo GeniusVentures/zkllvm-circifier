@@ -1,5 +1,8 @@
 add_llvm_library(DoublerPlugin MODULE BUILDTREE_ONLY
     DoublerPlugin.cpp
+    LINK_LIBS
+    LLVMCore
+    LLVMSupport
     )
 
 # Put PLUGIN next to the unit test executable.

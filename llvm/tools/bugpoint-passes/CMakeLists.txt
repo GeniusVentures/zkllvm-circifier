@@ -17,6 +17,9 @@ endif()
 add_llvm_library( BugpointPasses MODULE BUILDTREE_ONLY
   TestPasses.cpp
 
+  LINK_LIBS
+  LLVMCore
+
   DEPENDS
   intrinsics_gen
   bugpoint
