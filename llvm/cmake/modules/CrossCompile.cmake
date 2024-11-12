@@ -67,10 +67,33 @@ function(llvm_create_cross_target project_name target_name toolchain buildtype)
          "-DLLVM_EXTERNAL_${name}_SOURCE_DIR=${LLVM_EXTERNAL_${name}_SOURCE_DIR}")
   endforeach()
 
+  message(STATUS "CMAKE_MAKE_PROGRAM: ${CMAKE_MAKE_PROGRAM}")
+  message(STATUS "CMAKE_C_COMPILER_LAUNCHER: ${CMAKE_C_COMPILER_LAUNCHER}")
+  message(STATUS "CMAKE_CXX_COMPILER_LAUNCHER: ${CMAKE_CXX_COMPILER_LAUNCHER}")
+  message(STATUS "CROSS_TOOLCHAIN_FLAGS_${target_name}: ${CROSS_TOOLCHAIN_FLAGS_${target_name}}")
+  message(STATUS "CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")
+  message(STATUS "CROSS_TOOLCHAIN_FLAGS_${project_name}_${target_name}: ${CROSS_TOOLCHAIN_FLAGS_${project_name}_${target_name}}")
+  message(STATUS "LLVM_TARGET_IS_CROSSCOMPILE_HOST: TRUE")
+  message(STATUS "LLVM_TARGETS_TO_BUILD: ${targets_to_build_arg}")
+  message(STATUS "LLVM_EXPERIMENTAL_TARGETS_TO_BUILD: ${experimental_targets_to_build_arg}")
+  message(STATUS "LLVM_DEFAULT_TARGET_TRIPLE: ${LLVM_TARGET_TRIPLE}")
+  message(STATUS "LLVM_TARGET_ARCH: ${LLVM_TARGET_ARCH}")
+  message(STATUS "LLVM_ENABLE_PROJECTS: ${llvm_enable_projects_arg}")
+  message(STATUS "LLVM_EXTERNAL_PROJECTS: ${llvm_external_projects_arg}")
+  message(STATUS "LLVM_ENABLE_RUNTIMES: ${llvm_enable_runtimes_arg}")
+  message(STATUS "external_project_source_dirs: ${external_project_source_dirs}")
+  message(STATUS "LLVM_TEMPORARILY_ALLOW_OLD_TOOLCHAIN: ${LLVM_TEMPORARILY_ALLOW_OLD_TOOLCHAIN}")
+  message(STATUS "LLVM_INCLUDE_BENCHMARKS: OFF")
+  message(STATUS "LLVM_INCLUDE_TESTS: OFF")
+  message(STATUS "build_type_flags: ${build_type_flags}")
+  message(STATUS "linker_flag: ${linker_flag}")
+  message(STATUS "external_clang_dir: ${external_clang_dir}")
+  message(STATUS "Additional Arguments (ARGN): ${ARGN}")
   add_custom_command(OUTPUT ${${project_name}_${target_name}_BUILD}/CMakeCache.txt
     COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}"
         -DCMAKE_MAKE_PROGRAM="${CMAKE_MAKE_PROGRAM}"
         -DCMAKE_C_COMPILER_LAUNCHER="${CMAKE_C_COMPILER_LAUNCHER}"
+        -DCMAKE_TOOLCHAIN_FILE=""
         -DCMAKE_CXX_COMPILER_LAUNCHER="${CMAKE_CXX_COMPILER_LAUNCHER}"
         ${CROSS_TOOLCHAIN_FLAGS_${target_name}} ${CMAKE_CURRENT_SOURCE_DIR}
         ${CROSS_TOOLCHAIN_FLAGS_${project_name}_${target_name}}
