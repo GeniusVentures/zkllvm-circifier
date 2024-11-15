@@ -27,7 +27,7 @@ add_llvm_exegesis_unittest_link_components(
   )
 
 set(libs)
-if(HAVE_LIBRT)
+if(HAVE_LIBRT AND NOT APPLE)
   list(APPEND libs rt)
 endif()
 

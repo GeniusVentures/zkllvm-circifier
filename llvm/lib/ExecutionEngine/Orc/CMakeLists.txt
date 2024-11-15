@@ -2,7 +2,7 @@ if (NOT HAVE_CXX_ATOMICS64_WITHOUT_LIB)
   set (atomic_lib atomic)
 endif()
 
-if( CMAKE_HOST_UNIX AND HAVE_LIBRT )
+if( CMAKE_HOST_UNIX AND HAVE_LIBRT AND NOT APPLE)
   set(rt_lib rt)
 endif()
 

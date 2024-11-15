@@ -42,7 +42,7 @@ set(libs)
 if(LLVM_ENABLE_LIBPFM AND HAVE_LIBPFM)
   list(APPEND libs pfm)
 endif()
-if(HAVE_LIBRT)
+if(HAVE_LIBRT AND NOT APPLE)
   list(APPEND libs rt)
 endif()
 
