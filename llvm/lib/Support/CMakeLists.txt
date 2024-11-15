@@ -42,7 +42,7 @@ if( MSVC OR MINGW )
   # advapi32 required for CryptAcquireContextW in lib/Support/Windows/Path.inc.
   set(system_libs ${system_libs} psapi shell32 ole32 uuid advapi32)
 elseif( CMAKE_HOST_UNIX )
-  if( HAVE_LIBRT AND APPLE) 
+  if( HAVE_LIBRT AND NOT APPLE) 
     set(system_libs ${system_libs} rt)
   endif()
   if( HAVE_LIBDL )
