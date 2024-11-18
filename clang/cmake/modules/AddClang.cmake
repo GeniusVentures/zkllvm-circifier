@@ -169,6 +169,7 @@ macro(add_clang_tool name)
       get_target_export_arg(${name} Clang export_to_clangtargets)
       install(TARGETS ${name}
         ${export_to_clangtargets}
+        BUNDLE DESTINATION Applications
         RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
         COMPONENT ${name})
 

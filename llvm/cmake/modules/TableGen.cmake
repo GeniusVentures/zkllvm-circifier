@@ -202,6 +202,7 @@ macro(add_tablegen target project)
     install(TARGETS ${target}
             ${export_arg}
             COMPONENT ${target}
+            BUNDLE DESTINATION Applications
             RUNTIME DESTINATION "${ADD_TABLEGEN_DESTINATION}")
     if(NOT LLVM_ENABLE_IDE)
       add_llvm_install_targets("install-${target}"

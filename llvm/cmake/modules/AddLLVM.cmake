@@ -1354,6 +1354,7 @@ macro(llvm_add_tool project name)
         get_target_export_arg(${name} LLVM export_to_llvmexports)
         install(TARGETS ${name}
                 ${export_to_llvmexports}
+                BUNDLE DESTINATION Applications
                 RUNTIME DESTINATION ${${project}_TOOLS_INSTALL_DIR}
                 COMPONENT ${name})
 

@@ -53,6 +53,7 @@ if (NOT LLVM_INSTALL_TOOLCHAIN_ONLY)
   endif()
 
   install(TARGETS c-index-test
+  BUNDLE DESTINATION Applications
     RUNTIME DESTINATION "${INSTALL_DESTINATION}"
     COMPONENT c-index-test)
 
