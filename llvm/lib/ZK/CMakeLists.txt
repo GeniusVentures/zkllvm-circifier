@@ -1,4 +1,5 @@
 add_compile_options(-fexceptions)
+#add_compile_options(/EHsc) #MSVC overwrites this, hence the exception has to be defined on the source
 
 if(DEFINED crypto3_INCLUDE_DIR)
   include_directories(${crypto3_INCLUDE_DIR})
