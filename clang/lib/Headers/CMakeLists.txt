@@ -474,7 +474,7 @@ add_header_target("openmp-resource-headers" ${openmp_wrapper_files})
 add_header_target("windows-resource-headers" ${windows_only_files})
 add_header_target("utility-resource-headers" ${utility_files})
 
-get_clang_resource_dir(header_install_dir SUBDIR include)
+get_clang_resource_dir(header_install_dir PREFIX include/ SUBDIR include)
 
 #############################################################
 # Install rules for the catch-all clang-resource-headers target
