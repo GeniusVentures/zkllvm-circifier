@@ -71,7 +71,11 @@ private:
       return evaluateExpression((pint_t)prolog.cfaExpression, addressSpace, 
                                 registers, 0);
     assert(0 && "getCFA(): unknown location");
+    #if defined(_MSC_VER) && !defined(__clang__)
+    __assume(false);
+    #else
     __builtin_unreachable();
+    #endif
   }
 #if defined(_LIBUNWIND_TARGET_AARCH64)
   static bool getRA_SIGN_STATE(A &addressSpace, R registers, pint_t cfa,
