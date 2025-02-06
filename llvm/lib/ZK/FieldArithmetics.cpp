@@ -11,21 +11,6 @@
 #include "llvm/ADT/SmallString.h"
 #include "llvm/ZK/FieldArithmetics.h"
 
-#ifdef _MSC_VER  // Only compile this code on MSVC
-namespace boost {
-    void throw_exception(const std::exception& e) {
-        std::cerr << "Boost exception (MSVC): " << e.what() << std::endl;
-        std::terminate();
-    }
-
-    void throw_exception(const std::exception& e, const boost::source_location& loc) {
-        std::cerr << "Boost exception at " << loc.file_name() << ":" << loc.line()
-                  << ": " << e.what() << std::endl;
-        std::terminate();
-    }
-}
-#endif
-
 namespace llvm {
 
 unsigned GetNumberBits(GaloisFieldKind Kind) {
